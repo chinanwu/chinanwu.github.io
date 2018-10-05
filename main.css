@@ -1,0 +1,17 @@
+.container {
+    position: relative;
+}
+
+body {
+    margin: auto;
+    width: 50%;
+    display: inline-block;
+}
+
+html {
+    text-align: center;
+}
+
+.selfie {
+    max-width: 250px;
+}
