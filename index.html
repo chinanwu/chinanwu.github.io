@@ -2,38 +2,123 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Sam Wu</title>
+    <title>Chin-An Wu</title>
+
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
 
-<div class="container">
-    <div class="row"><br></div>
-    <div class="row">
-        <div class="col">
-            <h5>Sam Wu</h5>
+<div class="Header">
+    <div class="HeaderName" role="heading">Chin-An Wu</div>
+    <div class="HeaderContact">
+        <a class="HeaderGithub" href="http://github.com/chinanwu">github</a>
+        <a class="HeaderEmail" href="mailto:cawudev+githubinquiries@gmail.com">email</a>
+        <a class="HeaderLinkedin" href="https://www.linkedin.com/in/chinanwu/">linkedin</a>
+    </div>
+</div>
+<div class="Content" role="main">
+    <div class="ContentContainer Jobs">
+        <div class="Label Label--yellowBg" role="heading">
+            Work Experience
         </div>
-        <div class="col">
-            <span>University of British Columbia <br>
-                Combined Degree in Business and Computer Science</span>
+        <div class="Job">
+            <div class="JobHeader" role="heading">
+                <div class="JobTitle">Software Developer Co-op</div>
+                <div class="JobTime">Jan 2019 - Dec 2019</div>
+            </div>
+            <div class="JobCompany">BlueCat</div>
+            <div class="JobTechnologies">
+                <strong>Backend Technologies: </strong> Java, AWS, Docker, Jenkins, Cucumber, Guice <br>
+                <strong>Frontend Technologies: </strong> Javascript, React, Redux, Node, Jest
+            </div>
+        </div>
+        <div class="Job">
+            <div class="JobHeader" role="heading">
+                <div class="JobTitle">Backend Developer Intern</div>
+                <div class="JobTime">Jan 2018 - August 2018</div>
+            </div>
+            <div class="JobCompany">Chefs Plate</div>
+            <div class="JobTechnologies">
+                <strong>Technologies: </strong> PHP, MongoDB, Laravel, Composer, XDebug, Postman
+            </div>
+            <div class="JobDescription">
+                - Increased efficiency of weekly tasks by implementing a shipment creation service and a feature that exported all necessary data from the database for carrier communications. <br>
+                - Improved customer experience by creating and building upon existing endpoints for frequent tasks. <br>
+                - Wrote database queries to find fraudulent accounts for business reports, and to migrate data for new features. <br>
+                - Worked in an agile development environment with three other developers, meeting up daily for scrum meetings and code reviews.
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <img class="selfie" src="IMG_0096.JPG"/>
+    <div class="ContentContainer Projects">
+        <div class="Label Label--redBg" role="heading">
+            Projects
         </div>
-        <div class="col">
-            <br>
-            <span>
-                <strong>Contact information</strong><br>
-                sam.ca.wu@gmail.com
-            </span>
+        <div class="Project" role="heading">
+            <a href="https://github.com/chinanwu/mairead">Mairead</a>
+            <div class="ProjectDescription">A fun word game written in Go!</div>
+        </div>
+        <div class="Project">
+            <a href="https://github.com/chinanwu/dragons-n-dungeons">Dragons N Dungeons</a>
+            <div class="ProjectDescription">Web app made with Javascript, React, and Redux to help dungeon and dragon players!</div>
+        </div>
+    </div>
+
+    <div class="ContentContainer EducationContainer">
+        <div class="Label Label--greenBg" role="heading">
+            Education
+        </div>
+        <div class="Education">
+            <div class="EducationHeader" role="heading">
+                <div class="EducationDegree">
+                    Combined Degree in Business and Computer Science
+                </div>
+                <div class="EducationGrad">Expected graduation: May 2020</div>
+            </div>
+            <div class="EducationUni">University of British Columbia</div>
+        </div>
+    </div>
+
+    <div class="ContentContainer ContactContainer">
+        <div class="Label Label--blueBg" role="heading">
+            Contact Me
+        </div>
+        <div class="Contact">
+            <form class="ContactForm" action="javascript:" onsubmit="return createEmail(this);" method="post" enctype="text/plain">
+                <label class="ContactLabel" for="contactName">
+                    <div class="ContactLabelText">Name:</div>
+                    <input class="ContactInput" type="text" name="name" id="contactName" placeholder="Daniel Sedin"/>
+                </label>
+                <label class="ContactLabel" for="contactEmail">
+                    <div class="ContactLabelText"> Email:</div>
+                    <input class="ContactInput" type="text" name="email" id="contactEmail" placeholder="goNucks1999@gmail.com"/>
+                </label>
+                <label class="ContactLabel ContactBodyContainer" for="contactBody">
+                    Message: <br>
+                    <textarea class="ContactInput" id="contactBody" name="message" rows="5" cols="50"> </textarea>
+                </label>
+                <input class="ContactSubmit" type="submit" value="Send">
+            </form>
         </div>
     </div>
 </div>
+
+<script>
+    function createEmail(form)
+    {
+        const name = form[0].value;
+        const email = form[1].value;
+        let body = form[2].value;
+        const subject = "Hi, from your website!";
+        body += "%0A%0A- " + name + "%0A " + email;
+        const bodyReplaceSpaces = body.replace("/ /g", "%20");
+
+        window.location.href = "mailto:cawudev+githubinquiries@gmail.com?subject=" + subject + "&body=" + bodyReplaceSpaces;
+    }
+</script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

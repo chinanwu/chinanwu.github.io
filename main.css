@@ -1,17 +1,331 @@
-.container {
-    position: relative;
+* {
+    --mainBg: #424242;
+    --experienceBg: #494F52;
+    --experienceBgY: #FDD835;
+    --experienceBgYLight: #FFEE58;
+    --experienceBgR: #b71c1c;
+    --experienceBgRLight: #e57373;
+    --experienceBgG: #4CAF50;
+    --experienceBgB: #42A5F5;
+    --experienceBgBLight: #90CAF9;
+    --experienceBgBDark: #1976D2;
+    --experienceBgBDarker: #0D47A1;
+    --experienceBgBDarkest: #1A237E;
+
+    --shadow01: 0 1px 1px 0 rgba(0, 0, 0, 0.21), 0 2px 1px -1px rgba(0, 0, 0, 0.18), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    --shadow02: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+    --lightfont: #FAFAFA;
+
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--mainBg);
 }
 
-body {
-    margin: auto;
-    width: 50%;
-    display: inline-block;
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 112px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-html {
-    text-align: center;
+@media (max-width: 520px) {
+    .Header {
+        display: block;
+        padding-bottom: 10px;
+    }
 }
 
-.selfie {
-    max-width: 250px;
+.HeaderName {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--lightfont);
+}
+
+.HeaderContact {
+    display: flex;
+    flex-direction: column;
+    font-size: 21px;
+    align-items: flex-end;
+}
+
+.HeaderContact a {
+    color: #64B5F6;
+}
+
+.HeaderContact a:hover {
+    color: var(--lightfont);
+}
+
+@media (max-width: 519px) {
+    .HeaderContact {
+        align-items: flex-start;
+    }
+}
+
+@media (min-width: 520px) {
+    .HeaderGithub::after {
+        content: ".com/chinanwu"
+    }
+
+    .HeaderEmail::after {
+        content: ": cawudev@gmail.com"
+    }
+
+    .HeaderLinkedin::after {
+        content: ".com/in/chinanwu"
+    }
+}
+
+.Content {
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: var(--mainBg);
+}
+
+.ContentContainer {
+    border-radius: 5px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.21), 0 2px 1px -1px rgba(0, 0, 0, 0.18), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+
+.Jobs {
+    background-color: var(--experienceBgY);
+}
+
+.Label {
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.Label--yellowBg {
+    background-color: var(--experienceBgY);
+}
+
+.Job {
+    background-color: var(--experienceBgYLight);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.21), 0 2px 1px -1px rgba(0, 0, 0, 0.18), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.Job {
+    margin-bottom: 15px;
+}
+
+/*Unforunate*/
+.Job ~ .Job {
+    margin-bottom: 0;
+}
+
+.JobHeader {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--experienceBgYLight);
+}
+
+@media (max-width: 470px) {
+    .JobHeader {
+        display: block;
+    }
+}
+
+.JobTitle {
+    font-weight: bold;
+    font-size: 18px;
+    background-color: var(--experienceBgYLight);
+}
+
+.JobTime {
+    font-size: 14px;
+    background-color: var(--experienceBgYLight);
+}
+
+.JobCompany {
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-style: italic;
+    background-color: var(--experienceBgYLight);
+}
+
+@media (max-width: 520px) {
+    .JobCompany {
+        font-style: normal;
+    }
+}
+
+.JobTechnologies {
+    margin-bottom: 5px;
+    background-color: var(--experienceBgYLight);
+}
+
+.JobTechnologies strong {
+    background-color: var(--experienceBgYLight);
+}
+
+.JobDescription {
+    background-color: var(--experienceBgYLight);
+}
+
+.Label--redBg {
+    background-color: var(--experienceBgR);
+}
+
+.Projects {
+    background-color: var(--experienceBgR);
+    color: white;
+}
+
+.Project {
+    background-color: var(--experienceBgRLight);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.21), 0 2px 1px -1px rgba(0, 0, 0, 0.18), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    color: black;
+}
+
+.Project {
+    margin-bottom: 15px;
+}
+
+/*Unforunate*/
+.Project ~ .Project {
+    margin-bottom: 0;
+}
+
+.Project a {
+    background-color: var(--experienceBgRLight);
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+}
+
+.Project a:hover {
+    color: black;
+}
+
+.ProjectDescription {
+    background-color: var(--experienceBgRLight);
+}
+
+.Label--greenBg {
+    background-color: var(--experienceBgG);
+}
+
+.EducationContainer {
+    background-color: var(--experienceBgG);
+    color: black;
+}
+
+.Education {
+    background-color: var(--experienceBgG);
+}
+
+.EducationHeader {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--experienceBgG);
+}
+
+.EducationDegree {
+    font-weight: bold;
+}
+
+.EducationUni {
+    background-color: var(--experienceBgG);
+}
+
+.EducationGrad {
+    background-color: var(--experienceBgG);
+}
+
+@media (max-width: 750px) {
+    .EducationHeader {
+        display: block;
+    }
+}
+
+.EducationDegree {
+    background-color: var(--experienceBgG);
+}
+
+.Label--blueBg {
+    background-color: var(--experienceBgB);
+}
+
+.ContactContainer {
+    background-color: var(--experienceBgB);
+}
+
+.Contact {
+    background-color: var(--experienceBgBLight);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.21), 0 2px 1px -1px rgba(0, 0, 0, 0.18), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    color: black;
+}
+
+.ContactForm {
+    background-color: var(--experienceBgBLight);
+    display: flex;
+    flex-direction: column;
+}
+
+.ContactLabel {
+    background-color: var(--experienceBgBLight);
+    font-weight: bold;
+    display: flex;
+}
+
+.ContactLabelText {
+    background-color: var(--experienceBgBLight);
+    width: 60px;
+}
+
+.ContactInput {
+    background-color: var(--lightfont);
+    border: none;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+textarea {
+    width: 100%;
+}
+
+.ContactBodyContainer {
+    display: block;
+}
+
+.ContactSubmit {
+    background-color: var(--experienceBgBDarker);
+    border: none;
+    border-radius: 5px;
+    color: var(--lightfont);
+    padding-top: 3px;
+    padding-bottom: 3px;
+    box-shadow: var(--shadow01);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.ContactSubmit:hover {
+    background-color: var(--experienceBgBDarkest);
+    box-shadow: var(--shadow02);
+}
+
+.ContactSubmit:active {
+    background-color: var(--experienceBgBDark);
+}
+
+.ContactSubmit:after {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
 }
