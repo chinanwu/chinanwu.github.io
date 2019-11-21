@@ -6,6 +6,7 @@
     --experienceBgR: #b71c1c;
     --experienceBgRLight: #e57373;
     --experienceBgG: #4CAF50;
+    --experienceBgGLight: #81C784;
     --experienceBgB: #42A5F5;
     --experienceBgBLight: #90CAF9;
     --experienceBgBDark: #1976D2;
@@ -223,13 +224,17 @@
 }
 
 .Education {
-    background-color: var(--experienceBgG);
+    background-color: var(--experienceBgGLight);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.21), 0 2px 1px -1px rgba(0, 0, 0, 0.18), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    color: black;
 }
 
 .EducationHeader {
     display: flex;
     justify-content: space-between;
-    background-color: var(--experienceBgG);
+    background-color: var(--experienceBgGLight);
 }
 
 .EducationDegree {
@@ -237,11 +242,11 @@
 }
 
 .EducationUni {
-    background-color: var(--experienceBgG);
+    background-color: var(--experienceBgGLight);
 }
 
 .EducationGrad {
-    background-color: var(--experienceBgG);
+    background-color: var(--experienceBgGLight);
 }
 
 @media (max-width: 750px) {
@@ -251,7 +256,7 @@
 }
 
 .EducationDegree {
-    background-color: var(--experienceBgG);
+    background-color: var(--experienceBgGLight);
 }
 
 .Label--blueBg {
