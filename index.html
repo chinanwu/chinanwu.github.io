@@ -2,14 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Chin-An Wu</title>
-
     <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <title>Chin-An Wu</title>
 
     <link rel="stylesheet" type="text/css" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
 
@@ -22,11 +20,23 @@
     </div>
 </div>
 <div class="Content" role="main">
+    <div class="ContentContainer Skills">
+        <div class="Label Label--orangeBg" role="heading">
+           Technical Skills
+        </div>
+        <div class="Skill">
+            <strong>Backend development: </strong>Java, PHP, Go, Jenkins, AWS, Docker, Guice, MongoDB, SQL*Plus
+        </div>
+        <div class="Skill">
+            <strong>Frontend development: </strong> Javascript, React, Redux, Jest
+        </div>
+    </div>
+
     <div class="ContentContainer Jobs">
-        <div class="Label Label--yellowBg" role="heading">
+        <div class="Label" role="heading">
             Work Experience
         </div>
-        <div class="Job">
+        <div id='bluecatJob' class="Job" onclick="zoom('bluecatJob')">
             <div class="JobHeader" role="heading">
                 <div class="JobTitle">Software Developer Co-op</div>
                 <div class="JobTime">Jan 2019 - Dec 2019</div>
@@ -37,7 +47,7 @@
                 <strong>Frontend Technologies: </strong> Javascript, React, Redux, Node, Jest
             </div>
         </div>
-        <div class="Job">
+        <div id='chefsPlateJob' class="Job" onclick="zoom('chefsPlateJob')">
             <div class="JobHeader" role="heading">
                 <div class="JobTitle">Backend Developer Intern</div>
                 <div class="JobTime">Jan 2018 - August 2018</div>
@@ -56,7 +66,7 @@
     </div>
 
     <div class="ContentContainer Projects">
-        <div class="Label Label--redBg" role="heading">
+        <div class="Label" role="heading">
             Projects
         </div>
         <div class="Project" role="heading">
@@ -70,7 +80,7 @@
     </div>
 
     <div class="ContentContainer EducationContainer">
-        <div class="Label Label--greenBg" role="heading">
+        <div class="Label" role="heading">
             Education
         </div>
         <div class="Education">
@@ -85,19 +95,21 @@
     </div>
 
     <div class="ContentContainer ContactContainer">
-        <div class="Label Label--blueBg" role="heading">
+        <div class="Label" role="heading">
             Contact Me
         </div>
         <div class="Contact">
             <form class="ContactForm" action="javascript:" onsubmit="return createEmail(this);" method="post" enctype="text/plain">
-                <label class="ContactLabel" for="contactName">
-                    <div class="ContactLabelText">Name:</div>
-                    <input class="ContactInput" type="text" name="name" id="contactName" placeholder="Daniel Sedin"/>
-                </label>
-                <label class="ContactLabel" for="contactEmail">
-                    <div class="ContactLabelText"> Email:</div>
-                    <input class="ContactInput" type="text" name="email" id="contactEmail" placeholder="goNucks1999@gmail.com"/>
-                </label>
+                <div class="ContactField">
+                    <label class="ContactLabel ContactNameLabel" for="contactName">
+                        Name:
+                    </label>
+                    <input class="ContactInput ContactNameInput" type="text" name="name" id="contactName" placeholder="Daniel Sedin"/>
+                    <label class="ContactLabel ContactEmailLabel" for="contactEmail">
+                        Email:
+                    </label>
+                    <input class="ContactInput ContactEmailInput" type="text" name="email" id="contactEmail" placeholder="goNucks1999@gmail.com"/>
+                </div>
                 <label class="ContactLabel ContactBodyContainer" for="contactBody">
                     Message: <br>
                     <textarea class="ContactInput" id="contactBody" name="message" rows="5" cols="50"> </textarea>
@@ -120,10 +132,13 @@
 
         window.location.href = "mailto:cawudev+githubinquiries@gmail.com?subject=" + subject + "&body=" + bodyReplaceSpaces;
     }
-</script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    function zoom(id) {
+        const container = document.getElementById(id);
+        container.classList.contains('Overlay')
+            ? container.classList.remove('Overlay')
+            : container.classList.add('Overlay');
+    }
+</script>
 </body>
 </html>
