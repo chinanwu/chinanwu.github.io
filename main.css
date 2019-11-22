@@ -36,10 +36,12 @@
     padding-right: 15px;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 545px) {
     .Header {
         display: block;
         padding-bottom: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
     }
 }
 
@@ -64,13 +66,13 @@
     color: var(--lightfont);
 }
 
-@media (max-width: 520px) {
+@media (max-width: 545px) {
     .HeaderContact {
         align-items: flex-start;
     }
 }
 
-@media (min-width: 520px) {
+@media (min-width: 545px) {
     .HeaderGithub::after {
         content: ".com/chinanwu"
     }
@@ -88,6 +90,13 @@
     padding-left: 15px;
     padding-right: 15px;
     background-color: var(--mainBg);
+}
+
+@media (max-width: 545px) {
+    .Content {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 }
 
 .ContentContainer {
