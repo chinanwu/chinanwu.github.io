@@ -1,7 +1,13 @@
 * {
     --mainBg: #F5F5F5;
     --darker: #E0E0E0;
+    --darkerer: #BDBDBD;
+    --darkest: #9E9E9E;
+
     --shadow01: 0 1px 1px 0 rgba(0, 0, 0, 0.21), 0 2px 1px -1px rgba(0, 0, 0, 0.18), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    --shadow02: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    --shadow03: 0 3px 4px 0 rgba(0, 0, 0, 0.21),
+    0 3px 3px -2px rgba(0, 0, 0, 0.18), 0 1px 8px 0 rgba(0, 0, 0, 0.3);
 
     font-family: 'Open Sans', sans-serif;
     background-color: var(--mainBg);
@@ -38,11 +44,11 @@
     box-shadow: var(--shadow01);
     border-radius: 5px;
     margin-bottom: 16px;
+    padding: 15px;
 }
 
 .Label {
     font-size: 21px;
-    margin-top: 12px;
     background-color: inherit;
 }
 
@@ -56,9 +62,25 @@
     background-color: inherit;
 }
 
+.WireframesInner {
+    background-color: var(--darkerer);
+    border: 5px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: var(--shadow02);
+}
+
 .ProjectDescriptionHeader {
     background-color: inherit;
     font-size: 18px;
+}
+
+.ProjectDescriptionContainer {
+    background-color: var(--darkest);
+    margin: 8px 15px;
+    border-radius: 5px;
+    box-shadow: var(--shadow03);
 }
 
 .ProjectDescription {
