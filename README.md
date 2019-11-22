@@ -6,6 +6,7 @@
 - Download pdf resume
 - Make JSON file of resume stuff, so its not all in the code 
 - Improve contact me section
+- Accessibility
 
 ### Tools
 Some tools I used when creating this site:

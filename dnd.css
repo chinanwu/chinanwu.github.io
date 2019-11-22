@@ -1,0 +1,85 @@
+* {
+    --mainBg: #F5F5F5;
+    --darker: #E0E0E0;
+    --shadow01: 0 1px 1px 0 rgba(0, 0, 0, 0.21), 0 2px 1px -1px rgba(0, 0, 0, 0.18), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--mainBg);
+}
+
+.ProjectPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ProjectHeader {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.ProjectLabel {
+    background-color: inherit;
+    font-size: 64px;
+    font-family: 'Calistoga', sans-serif;
+}
+
+.DndLogo {
+    background-color: inherit;
+    width: 50%;
+}
+
+.Wireframes {
+    background-color: var(--darker);
+    text-align: center;
+    box-shadow: var(--shadow01);
+    border-radius: 5px;
+    margin-bottom: 16px;
+}
+
+.Label {
+    font-size: 21px;
+    margin-top: 12px;
+    background-color: inherit;
+}
+
+.WireframeDisclaimer {
+    background-color: inherit;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.Wireframes a {
+    background-color: inherit;
+}
+
+.ProjectDescriptionHeader {
+    background-color: inherit;
+    font-size: 18px;
+}
+
+.ProjectDescription {
+    background-color: inherit;
+}
+
+.ProjectDescription a {
+    background-color: inherit;
+}
+
+.Screenshot {
+    width: 80%;
+    margin-bottom: 12px;
+    margin-top: 6px;
+}
+
+.ProjectCurrent {
+    background-color: var(--darker);
+    text-align: center;
+    box-shadow: var(--shadow01);
+    border-radius: 5px;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
