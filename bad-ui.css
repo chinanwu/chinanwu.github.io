@@ -1,0 +1,26 @@
+.ExampleContainer {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 6px;
+}
+
+.Example {
+    margin: 6px;
+}
+
+.ExampleTitle {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.ExampleButton {
+    margin-bottom: 6px;
+}
+
+.ExampleOneNumber{
+    display: flex;
+}
+
+.ExampleThreeTime {
+    display: flex;
+}
