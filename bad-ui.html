@@ -150,7 +150,7 @@
 		document.getElementById("hour").innerText = (time.getHours() % 12).toString();
 		document.getElementById("period").innerText = (time.getHours() > 12) ? "PM" : "AM";
 
-		document.getElementById("minute").innerText = time.getMinutes().toString();
+		document.getElementById("minute").innerText = (time.getMinutes() < 10) ? "0" + time.getMinutes().toString() : time.getMinutes().toString();
 
 		document.getElementById("second").innerText =
             time.getSeconds() < 10
