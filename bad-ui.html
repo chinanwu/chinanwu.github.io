@@ -132,7 +132,7 @@
 
 	function handleBackClick() {
 		document.getElementById(clockOpts[currClock]).style.textDecoration = "none";
-		currClock = (currClock - 1) % 3;
+		currClock = (currClock === 0) ? 2 : ((currClock - 1) % 3);
 		document.getElementById(clockOpts[currClock]).style.textDecoration = "underline";
 	}
 
