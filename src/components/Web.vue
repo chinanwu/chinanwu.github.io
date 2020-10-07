@@ -1,8 +1,8 @@
 <template>
-  <div class="TextFile">
-    <PButton class="TextFile__btn --flex" tabindex="2">
+  <div class="Web">
+    <PButton class="Web__btn --flex" tabindex="2">
       <template #content>
-        <TextFileIcon />
+        <WebIcon />
         {{ name }}
       </template>
     </PButton>
@@ -11,10 +11,11 @@
 
 <script>
 import { PButton } from "pomelo-lib-vue";
-import TextFileIcon from "@/components/TextFileIcon";
+import WebIcon from "@/components/WebIcon";
+
 export default {
-  name: "TextFile",
-  components: { TextFileIcon, PButton },
+  name: "Web",
+  components: { WebIcon, PButton },
   props: {
     name: {
       type: String,
@@ -25,13 +26,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.TextFile {
+.Web {
   margin-top: 1rem;
   display: flex;
   justify-content: center;
 }
 
-.TextFile__btn {
+.Web__btn {
   flex-direction: column;
   font-size: 2.4rem;
   justify-content: center;

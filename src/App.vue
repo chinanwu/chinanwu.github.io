@@ -2,23 +2,23 @@
   <header class="App__header">
     <div class="--flex">
       <div class="App__headerDropdown">
-        <PButton class="App__headerBtn" @click="dropdownOpen = !dropdownOpen">
+        <PButton class="App__headerBtn" @click="openDropdown = !openDropdown">
           <template #content>
             🤠
           </template>
         </PButton>
         <ul
           class="App__headerDropdownOpts"
-          v-if="dropdownOpen"
+          v-if="openDropdown"
           v-click-outside.close="closeDropdown"
         >
           <li>
-            <PButton class="App__headerDropdownOpt">
+            <PButton class="App__headerDropdownOpt" @click="openSiteModal">
               <template #content>About This Site</template>
             </PButton>
           </li>
-          <li id="lastchild">
-            <PButton class="App__headerDropdownOpt">
+          <li>
+            <PButton class="App__headerDropdownOpt" @click="openSalmonModal">
               <template #content>About Salmon</template>
             </PButton>
           </li>
@@ -35,40 +35,99 @@
     </div>
   </header>
 
-  <div class="App__desktop">
-    <Directory name="Projects" :open="open" @click="open = !open" />
+  <div class="App__desktopIcons">
+    <Directory
+      name="Projects"
+      :open="openProjects"
+      @click="openProjects = true"
+      @keydown="handleKeyDown"
+    />
     <TextFile name="Resume" />
+    <Web name="Personal Site" />
   </div>
 
-  <div class="App_finder" v-if="open">
-    <div class="App__finderHeader">
-      <PButton class="App__finderHeaderClose" @click="open = false"></PButton>
-      Projects
-    </div>
-  </div>
+  <Modal
+    v-if="openProjects"
+    label="Projects"
+    @close="closeProjects"
+    :darken="false"
+  >
+    <template #content>
+      <div class="App__projects">
+        <Directory
+          class="App__project"
+          v-for="(project, index) in projects"
+          :name="project.name"
+          :key="'project-' + index"
+          @click="goTo(project.link)"
+        />
+      </div>
+    </template>
+  </Modal>
+
+  <Modal v-if="openAboutSite" label="About This Site" @close="closeSiteModal" />
+  <Modal
+    v-if="openAboutSalmon"
+    label="About Salmon"
+    @close="closeSalmonModal"
+  />
 </template>
 
 <script>
 import { PButton } from "pomelo-lib-vue";
 import Directory from "@/components/Directory";
 import TextFile from "@/components/TextFile";
+import Web from "@/components/Web";
+import Modal from "@/components/Modal";
+
+// TODO: Add keydown stuff for everything
 
 export default {
   name: "App",
   data() {
     return {
-      open: false,
       time: {
         hours: new Date().getHours(),
         minutes: new Date().getMinutes()
       },
-      dropdownOpen: false
+      openProjects: false,
+      openDropdown: false,
+      openAboutSite: false,
+      openAboutSalmon: false,
+      projects: [
+        {
+          name: "Delta",
+          link: "https://delta.chinanwu.com"
+        },
+        {
+          name: "Pomelo",
+          link: "https://chinanwu.github.io/pomelo-lib"
+        },
+        {
+          name: "DND",
+          link: "https://chinanwu.github.io/dragons-n-dungeons"
+        },
+        {
+          name: "Affirmer",
+          link: "https://chinanwu.github.io/affirmer"
+        },
+        {
+          name: "Magnet Poetry",
+          link: "https://chinanwu.github.io/magnet-poetry"
+        },
+        {
+          name: "This Site",
+          link: "https://github.com/chinanwu/chinanwu.github.io"
+        }
+      ]
     };
   },
   components: {
     TextFile,
     Directory,
-    PButton
+    PButton,
+    Web,
+    Modal
   },
   mounted() {
     this.getTime();
@@ -84,7 +143,41 @@ export default {
       }, 1000);
     },
     closeDropdown() {
-      this.dropdownOpen = false;
+      this.openDropdown = false;
+    },
+    handleKeyDown(event) {
+      if (
+        event &&
+        event.key &&
+        !event.shiftKey &&
+        !event.ctrlKey &&
+        !event.altKey &&
+        !event.metaKey &&
+        (event.key === "enter" || event.key === "space") // if enter or space is pressed
+      ) {
+        event.preventDefault();
+        this.openProjects = true;
+      }
+    },
+    openSiteModal() {
+      this.openDropdown = false;
+      this.openAboutSite = true;
+    },
+    openSalmonModal() {
+      this.openDropdown = false;
+      this.openAboutSalmon = true;
+    },
+    closeSiteModal() {
+      this.openAboutSite = false;
+    },
+    closeSalmonModal() {
+      this.openAboutSalmon = false;
+    },
+    closeProjects() {
+      this.openProjects = false;
+    },
+    goTo(url) {
+      window.open(url);
     }
   },
   directives: {
@@ -92,7 +185,7 @@ export default {
       mounted(el, binding) {
         const children = el.childNodes;
         const handleMouseDown = e => {
-          const target = e.target;
+          const target = e.target.parentElement;
 
           for (let i = 0; i < children.length; i++) {
             if (children[i] === target) {
@@ -101,49 +194,12 @@ export default {
           }
 
           binding.value();
+          document.removeEventListener("mousedown", handleMouseDown);
+          document.removeEventListener("keydown", handleMouseDown);
         };
 
         document.addEventListener("mousedown", handleMouseDown);
-        document.addEventListener("keydown", e => {
-          const target = e.target.parentElement;
-          const firstChild = children[0];
-          const lastChild = children[children.length - 1];
-
-          if (
-            (target === lastChild && !e.shiftKey && e.keyCode === 9) ||
-            (target === firstChild && e.shiftKey && e.keyCode === 9)
-          ) {
-            binding.value();
-          }
-        });
-      },
-      unmounted(el, binding) {
-        const children = el.childNodes;
-        const handleMouseDown = e => {
-          const target = e.target;
-
-          for (let i = 0; i < children.length; i++) {
-            if (children[i] === target) {
-              return;
-            }
-          }
-
-          binding.value();
-        };
-
-        document.removeEventListener("mousedown", handleMouseDown);
-        document.addEventListener("keydown", e => {
-          const target = e.target.parentElement;
-          const firstChild = children[0];
-          const lastChild = children[children.length - 1];
-
-          if (
-            (target === lastChild && !e.shiftKey && e.keyCode === 9) ||
-            (target === firstChild && e.shiftKey && e.keyCode === 9)
-          ) {
-            binding.value();
-          }
-        });
+        document.addEventListener("keydown", handleMouseDown);
       }
     }
   }
@@ -211,8 +267,8 @@ p {
 #app {
   min-height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  //justify-content: center;
+  //align-items: center;
 }
 </style>
 
@@ -246,6 +302,7 @@ p {
   margin: 0;
   background: rgba(255, 255, 255, 0.6);
   font-size: 1.6rem;
+  z-index: 1;
 }
 
 .App__headerDropdownOpt {
@@ -290,53 +347,23 @@ p {
   }
 }
 
-.App__desktop {
+.App__desktopIcons {
   display: flex;
   flex-direction: column;
   position: absolute;
   right: 3rem;
   transform: translateY(8rem);
   top: 0;
-}
-
-.App_finder {
-  width: 50rem;
-  height: 30rem;
-  background-color: white;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
-    0 2px 4px -1px rgba(0, 0, 0, 0.2);
-}
-
-.App__finderHeader {
-  background-color: #efefef;
-  display: flex;
-}
-
-.App__finderHeaderClose {
-  height: 18px;
-  width: 18px;
-  background-color: #e87171;
-  border-radius: 50%;
-  margin: 0.8rem;
-  border: none;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  transition: all 0.2s;
+}
 
-  &:focus::before,
-  &:hover::before {
-    content: "X";
-  }
+.App__projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  justify-items: center;
+}
 
-  &:hover,
-  &:focus {
-    box-shadow: 0 0 0 0.4rem rgba(232, 113, 113, 0.3);
-  }
-
-  &:active {
-    box-shadow: 0 0 0 0.2rem rgba(232, 113, 113, 0.3);
-    background-color: #dd6b6b;
-  }
+.App__project {
+  margin: 1rem;
 }
 </style>

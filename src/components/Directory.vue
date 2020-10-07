@@ -5,6 +5,7 @@
       :aria-labelledby="'Open' + name + 'folder'"
       @dblclick="emitClick"
       @click="emitClick"
+      tabindex="1"
     >
       <template #content>
         <component :is="currentFolder"></component>
