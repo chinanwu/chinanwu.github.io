@@ -106,19 +106,20 @@ export default {
         document.addEventListener("mousedown", handleMouseDown);
         document.addEventListener("keydown", e => {
           const target = e.target.parentElement;
+          const firstChild = children[0];
           const lastChild = children[children.length - 1];
 
-          console.log(target);
-          console.log(lastChild);
-
-          if (target === lastChild && !e.shiftKey && e.keyCode === 9) {
+          if (
+            (target === lastChild && !e.shiftKey && e.keyCode === 9) ||
+            (target === firstChild && e.shiftKey && e.keyCode === 9)
+          ) {
             binding.value();
           }
         });
       },
       unmounted(el, binding) {
+        const children = el.childNodes;
         const handleMouseDown = e => {
-          const children = el.childNodes;
           const target = e.target;
 
           for (let i = 0; i < children.length; i++) {
@@ -131,6 +132,18 @@ export default {
         };
 
         document.removeEventListener("mousedown", handleMouseDown);
+        document.addEventListener("keydown", e => {
+          const target = e.target.parentElement;
+          const firstChild = children[0];
+          const lastChild = children[children.length - 1];
+
+          if (
+            (target === lastChild && !e.shiftKey && e.keyCode === 9) ||
+            (target === firstChild && e.shiftKey && e.keyCode === 9)
+          ) {
+            binding.value();
+          }
+        });
       }
     }
   }
