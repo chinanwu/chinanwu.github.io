@@ -71,4 +71,12 @@ export default {
     transform: translateY(0.5rem);
   }
 }
+
+@media only screen and (max-width: 375px) {
+  .Directory {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+}
 </style>

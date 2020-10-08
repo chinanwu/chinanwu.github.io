@@ -50,4 +50,14 @@ export default {
 .Modal--dark {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+@media only screen and (max-width: 375px) {
+  .Modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
 </style>

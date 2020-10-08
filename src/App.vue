@@ -2,7 +2,7 @@
   <header class="App__header">
     <div class="--flex">
       <div class="App__headerDropdown">
-        <PButton class="App__headerBtn" @click="openDropdown = !openDropdown">
+        <PButton class="App__headerBtn" @click="handleDropdown">
           <template #content>
             🤠
           </template>
@@ -42,8 +42,8 @@
       @click="openProjects = true"
       @keydown="handleKeyDown"
     />
-    <TextFile name="Resume" />
-    <Web name="Personal Site" />
+    <TextFile name="Resume" @click="goTo(require('./assets/resume.pdf'))" />
+    <Web name="Personal Site" @click="goTo('https://chinanwu.com')" />
   </div>
 
   <Modal
@@ -65,22 +65,63 @@
     </template>
   </Modal>
 
-  <Modal v-if="openAboutSite" label="About This Site" @close="closeSiteModal" />
-  <Modal
-    v-if="openAboutSalmon"
-    label="About Salmon"
-    @close="closeSalmonModal"
-  />
+  <Modal v-if="openAboutSite" label="About This Site" @close="closeSiteModal">
+    <template #content>
+      <div class="App__aboutSite">
+        <SalmonIcon />
+        <div>
+          <div>
+            <h2 class="App__siteHeader">
+              chinanwu<span class="App__siteHeader--weak">.github.io</span>
+            </h2>
+            <p class="App__siteVersion">Version 1.0.0</p>
+          </div>
+          <section class="App__siteDetails">
+            <p>Hosted on <strong>Github Pages</strong></p>
+            <p>Made with <strong>Vue</strong></p>
+            <p>Designed with <strong>Figma</strong></p>
+            <p>Created by <strong>Chin-An Wu</strong></p>
+          </section>
+        </div>
+      </div>
+    </template>
+  </Modal>
+
+  <Modal v-if="openAboutSalmon" label="About Salmon" @close="closeSalmonModal">
+    <template #content>
+      <h2 class="App__salmonHeader">
+        Chin-An (Salmon) Wu
+      </h2>
+
+      <ul class="App__aboutSalmonList">
+        <li class="App__aboutSalmonListItem">THEY/THEM</li>
+        <li class="App__aboutSalmonListItem">TORONTO-BASED</li>
+        <li class="App__aboutSalmonListItem">SOFTWARE DEVELOPER</li>
+      </ul>
+
+      <p class="App__salmonBlurb">
+        Salmon is a Toronto-based Software Developer. They grew up in Vancouver,
+        BC (UBC alum) and love playing ice hockey. Access their personal site
+        (not this site funnily enough) @
+        <a href="https://chinanwu.com" title="Chin-An Wu's Personal Site">
+          chinanwu.com</a
+        >.
+      </p>
+    </template>
+  </Modal>
 </template>
 
 <script>
 import { PButton } from "pomelo-lib-vue";
 import Directory from "@/components/Directory";
+import Modal from "@/components/Modal";
+import SalmonIcon from "@/components/SalmonIcon";
 import TextFile from "@/components/TextFile";
 import Web from "@/components/Web";
-import Modal from "@/components/Modal";
 
 // TODO: Add keydown stuff for everything
+// TODO: Make sure modals have label set or aria-label set
+// TODO: Update resume
 
 export default {
   name: "App",
@@ -123,6 +164,7 @@ export default {
     };
   },
   components: {
+    SalmonIcon,
     TextFile,
     Directory,
     PButton,
@@ -141,6 +183,9 @@ export default {
           minutes: date.getMinutes()
         };
       }, 1000);
+    },
+    handleDropdown() {
+      this.openDropdown = !this.openDropdown;
     },
     closeDropdown() {
       this.openDropdown = false;
@@ -270,6 +315,12 @@ p {
   //justify-content: center;
   //align-items: center;
 }
+
+@media only screen and (max-width: 375px) {
+  #app {
+    display: initial;
+  }
+}
 </style>
 
 <style lang="less" scoped>
@@ -301,7 +352,6 @@ p {
   padding: 0;
   margin: 0;
   background: rgba(255, 255, 255, 0.6);
-  font-size: 1.6rem;
   z-index: 1;
 }
 
@@ -312,6 +362,7 @@ p {
   text-align: left;
   border-radius: 0;
   font-size: 1.6rem;
+  display: flex;
 
   &:hover,
   &:focus {
@@ -350,11 +401,11 @@ p {
 .App__desktopIcons {
   display: flex;
   flex-direction: column;
+  align-items: center;
   position: absolute;
+  top: 0;
   right: 3rem;
   transform: translateY(8rem);
-  top: 0;
-  align-items: center;
 }
 
 .App__projects {
@@ -365,5 +416,98 @@ p {
 
 .App__project {
   margin: 1rem;
+}
+
+.App__aboutSite {
+  display: flex;
+  align-items: center;
+  height: 70%;
+  justify-content: space-around;
+}
+
+.App__siteHeader {
+  padding-bottom: 0;
+}
+
+.App__siteHeader--weak {
+  font-weight: 100;
+}
+
+.App__siteVersion {
+  margin-top: 0;
+}
+
+.App__siteDetails p {
+  margin: 0;
+}
+
+.App__aboutSalmonList {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0 0 0 1rem;
+}
+
+.App__aboutSalmonListItem::after {
+  content: "\00a0|\00a0";
+}
+
+.App__aboutSalmonListItem:nth-child(3)::after {
+  content: "";
+}
+
+@media only screen and (max-width: 375px) {
+  .App__header {
+    position: initial;
+  }
+
+  .App__headerName::after {
+    content: "";
+  }
+
+  .App__headerDropdownOpt {
+    font-size: 2.4rem;
+  }
+
+  .App__time {
+    display: none;
+  }
+
+  .App__desktopIcons {
+    position: initial;
+    transform: translateY(0);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    width: 100%;
+  }
+
+  .App__projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+  }
+
+  .App__aboutSite {
+    flex-direction: column;
+  }
+
+  .App__siteHeader,
+  .App__salmonHeader {
+    font-size: 3rem;
+  }
+
+  .App__siteVersion,
+  .App__siteDetails,
+  .App__aboutSalmonList,
+  .App__salmonBlurb {
+    font-size: 2.2rem;
+  }
+
+  .App__aboutSalmonList {
+    flex-direction: column;
+  }
+
+  .App__aboutSalmonListItem::after {
+    content: "";
+  }
 }
 </style>

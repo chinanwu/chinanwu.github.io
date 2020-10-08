@@ -90,4 +90,11 @@ export default {
     background-color: #dd6b6b;
   }
 }
+
+@media only screen and (max-width: 375px) {
+  .Finder {
+    width: 100%;
+    min-height: 100vh; // Not sure if this is the best?
+  }
+}
 </style>

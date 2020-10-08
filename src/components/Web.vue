@@ -1,6 +1,6 @@
 <template>
   <div class="Web">
-    <PButton class="Web__btn --flex" tabindex="2">
+    <PButton class="Web__btn --flex" tabindex="2" @click="emitClick">
       <template #content>
         <WebIcon />
         {{ name }}
@@ -16,10 +16,16 @@ import WebIcon from "@/components/WebIcon";
 export default {
   name: "Web",
   components: { WebIcon, PButton },
+  emits: ["click"],
   props: {
     name: {
       type: String,
       default: null
+    }
+  },
+  methods: {
+    emitClick() {
+      this.$emit("click");
     }
   }
 };
@@ -49,6 +55,14 @@ export default {
 
   &:active {
     transform: translateY(0.5rem);
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .Web {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 }
 </style>
