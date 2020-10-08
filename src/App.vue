@@ -334,7 +334,7 @@ p {
   top: 0;
 }
 
-.App__headerBtn {
+::v-deep(.App__headerBtn) {
   font-size: 3rem;
   background: none;
   border: none;

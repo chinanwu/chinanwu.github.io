@@ -31,7 +31,7 @@ export default {
   justify-content: center;
 }
 
-.TextFile__btn {
+::v-deep(.TextFile__btn) {
   flex-direction: column;
   font-size: 2.4rem;
   justify-content: center;

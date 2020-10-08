@@ -38,7 +38,7 @@ export default {
   justify-content: center;
 }
 
-.Web__btn {
+::v-deep(.Web__btn) {
   flex-direction: column;
   font-size: 2.4rem;
   justify-content: center;

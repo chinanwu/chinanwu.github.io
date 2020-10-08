@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.Directory__btn {
+::v-deep(.Directory__btn) {
   flex-direction: column;
   font-size: 2.4rem;
   justify-content: center;
