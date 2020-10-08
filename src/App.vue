@@ -316,7 +316,7 @@ p {
   //align-items: center;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 525px) {
   #app {
     display: initial;
   }
@@ -456,7 +456,7 @@ p {
   content: "";
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 525px) {
   .App__header {
     position: initial;
   }
@@ -493,6 +493,10 @@ p {
   .App__siteHeader,
   .App__salmonHeader {
     font-size: 3rem;
+  }
+
+  .App__salmonHeader {
+    text-align: center;
   }
 
   .App__siteVersion,

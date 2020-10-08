@@ -72,7 +72,7 @@ export default {
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 525px) {
   .Directory {
     display: flex;
     justify-content: center;

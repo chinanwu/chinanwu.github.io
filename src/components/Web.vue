@@ -58,7 +58,7 @@ export default {
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 525px) {
   .Web {
     margin-top: 1rem;
     margin-left: 2rem;

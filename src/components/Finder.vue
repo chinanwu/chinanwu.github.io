@@ -7,10 +7,22 @@
         @keydown="handleKeyDown"
         tabindex="1"
       ></PButton>
-      <h2>{{ label }}</h2>
+      <h2 class="Finder__headerLabel">{{ label }}</h2>
     </div>
 
     <slot name="content"></slot>
+
+    <div class="Finder__closeBtnContainer--mobile">
+      <PButton
+        class="Finder__closeBtn--mobile"
+        @click="handleClick"
+        @keydown="handleKeyDown"
+      >
+        <template #content>
+          CLOSE
+        </template>
+      </PButton>
+    </div>
   </div>
 </template>
 
@@ -91,10 +103,47 @@ export default {
   }
 }
 
-@media only screen and (max-width: 375px) {
+.Finder__closeBtnContainer--mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 525px) {
   .Finder {
     width: 100%;
-    min-height: 100vh; // Not sure if this is the best?
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+  }
+
+  .Finder__closeBtn {
+    display: none;
+  }
+
+  .Finder__headerLabel {
+    font-size: 3rem;
+  }
+
+  .Finder__closeBtnContainer--mobile {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .Finder__closeBtn--mobile {
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 2.2rem;
+    transition: all 0.2s;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 0.6rem rgba(0, 0, 0, 0.04);
+    }
+
+    &:active {
+      box-shadow: 0 0 0 0.3rem rgba(0, 0, 0, 0.04);
+      background-color: rgba(0, 0, 0, 0.08);
+    }
   }
 }
 </style>
