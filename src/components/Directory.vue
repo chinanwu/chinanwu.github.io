@@ -1,22 +1,19 @@
 <template>
   <div class="Directory">
-    <PButton
-      class="Directory__btn --flex"
-      :aria-labelledby="'Open' + name + 'folder'"
+    <button
+      class="Directory__btn --flex btn"
+      :aria-labelledby="'Open ' + name + ' folder'"
       @dblclick="emitClick"
       @click="emitClick"
       tabindex="1"
     >
-      <template #content>
-        <component :is="currentFolder"></component>
-        {{ name }}
-      </template>
-    </PButton>
+      <component :is="currentFolder"></component>
+      {{ name }}
+    </button>
   </div>
 </template>
 
 <script>
-import { PButton } from "pomelo-lib-vue";
 import ClosedFolder from "@/components/ClosedFolder";
 import OpenFolder from "@/components/OpenFolder";
 
@@ -35,8 +32,7 @@ export default {
   emits: ["click"],
   components: {
     ClosedFolder,
-    OpenFolder,
-    PButton
+    OpenFolder
   },
   computed: {
     currentFolder() {
@@ -52,7 +48,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-::v-deep(.Directory__btn) {
+.Directory__btn {
   flex-direction: column;
   font-size: 2.4rem;
   justify-content: center;

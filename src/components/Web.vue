@@ -1,21 +1,18 @@
 <template>
   <div class="Web">
-    <PButton class="Web__btn --flex" tabindex="2" @click="emitClick">
-      <template #content>
-        <WebIcon />
-        {{ name }}
-      </template>
-    </PButton>
+    <button class="Web__btn --flex button" tabindex="2" @click="emitClick">
+      <WebIcon />
+      {{ name }}
+    </button>
   </div>
 </template>
 
 <script>
-import { PButton } from "pomelo-lib-vue";
 import WebIcon from "@/components/WebIcon";
 
 export default {
   name: "Web",
-  components: { WebIcon, PButton },
+  components: { WebIcon },
   emits: ["click"],
   props: {
     name: {

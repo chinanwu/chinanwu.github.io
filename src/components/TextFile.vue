@@ -1,20 +1,17 @@
 <template>
   <div class="TextFile">
-    <PButton class="TextFile__btn --flex" tabindex="2">
-      <template #content>
-        <TextFileIcon />
-        {{ name }}
-      </template>
-    </PButton>
+    <button class="TextFile__btn --flex btn" tabindex="2">
+      <TextFileIcon />
+      {{ name }}
+    </button>
   </div>
 </template>
 
 <script>
-import { PButton } from "pomelo-lib-vue";
 import TextFileIcon from "@/components/TextFileIcon";
 export default {
   name: "TextFile",
-  components: { TextFileIcon, PButton },
+  components: { TextFileIcon },
   props: {
     name: {
       type: String,

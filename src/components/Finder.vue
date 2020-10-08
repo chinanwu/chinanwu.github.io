@@ -1,34 +1,30 @@
 <template>
   <div class="Finder">
     <div class="Finder__header">
-      <PButton
-        class="Finder__closeBtn"
+      <button
+        class="Finder__closeBtn btn"
         @click="handleClick"
         @keydown="handleKeyDown"
         tabindex="1"
-      ></PButton>
+      ></button>
       <h2 class="Finder__headerLabel">{{ label }}</h2>
     </div>
 
     <slot name="content"></slot>
 
     <div class="Finder__closeBtnContainer--mobile">
-      <PButton
-        class="Finder__closeBtn--mobile"
+      <button
+        class="Finder__closeBtn--mobile btn"
         @click="handleClick"
         @keydown="handleKeyDown"
       >
-        <template #content>
-          CLOSE
-        </template>
-      </PButton>
+        CLOSE
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import { PButton } from "pomelo-lib-vue";
-
 export default {
   name: "Finder",
   props: {
@@ -56,9 +52,6 @@ export default {
         this.handleClick();
       }
     }
-  },
-  components: {
-    PButton
   }
 };
 </script>
