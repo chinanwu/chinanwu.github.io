@@ -1,6 +1,6 @@
 <template>
   <div class="Web">
-    <button class="Web__btn --flex button" tabindex="2" @click="emitClick">
+    <button class="Web__btn --flex btn" tabindex="2" @click="emitClick">
       <WebIcon />
       {{ name }}
     </button>
