@@ -2,25 +2,23 @@
   <header class="App__header">
     <div class="--flex">
       <div class="App__headerDropdown">
-        <PButton class="App__headerBtn" @click="handleDropdown">
-          <template #content>
-            🤠
-          </template>
-        </PButton>
+        <button class="App__headerBtn btn" @click="handleDropdown">
+          🤠
+        </button>
         <ul
           class="App__headerDropdownOpts"
           v-if="openDropdown"
           v-click-outside.close="closeDropdown"
         >
           <li>
-            <PButton class="App__headerDropdownOpt" @click="openSiteModal">
-              <template #content>About This Site</template>
-            </PButton>
+            <button class="App__headerDropdownOpt btn" @click="openSiteModal">
+              About This Site
+            </button>
           </li>
           <li>
-            <PButton class="App__headerDropdownOpt" @click="openSalmonModal">
-              <template #content>About Salmon</template>
-            </PButton>
+            <button class="App__headerDropdownOpt btn" @click="openSalmonModal">
+              About Salmon
+            </button>
           </li>
         </ul>
       </div>
@@ -112,7 +110,6 @@
 </template>
 
 <script>
-import { PButton } from "pomelo-lib-vue";
 import Directory from "@/components/Directory";
 import Modal from "@/components/Modal";
 import SalmonIcon from "@/components/SalmonIcon";
@@ -167,7 +164,6 @@ export default {
     SalmonIcon,
     TextFile,
     Directory,
-    PButton,
     Web,
     Modal
   },
@@ -314,6 +310,14 @@ p {
   display: flex;
   //justify-content: center;
   //align-items: center;
+}
+
+.btn {
+  background-color: inherit;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: 1.4rem;
 }
 
 @media only screen and (max-width: 525px) {
