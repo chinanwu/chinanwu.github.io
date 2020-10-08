@@ -13,8 +13,8 @@ I designed the entire site! I even created the icons utilized. Figma was a great
 ![Screenshot of the site](/screenshots/screenshot-three.png)
 
 ### Mobile
-![Screenshot of the site in mobile view](/screenshots/mobile-screenshot-three.png)
-![Screenshot of the site in mobile view](/screenshots/mobile-screenshot-three.png)
+![Screenshot of the site in mobile view](/screenshots/mobile-screenshot-one.png)
+![Screenshot of the site in mobile view](/screenshots/mobile-screenshot-two.png)
 ![Screenshot of the site in mobile view](/screenshots/mobile-screenshot-three.png)
 ![Screenshot of the site in mobile view](/screenshots/mobile-screenshot-four.png)
 
